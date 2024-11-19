@@ -71,7 +71,6 @@ const AdventureDetails = () => {
               ))}
             </ul>
           </div>
-  
           <p className="text-sm text-gray-500 mt-4">{adventure.description}</p>
         </div>
       </div>
