@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div className="space-y-8">
       {/* Banner Section */}
-      <Banner adventures={adventures} />
+      <Banner/>
 
       {/* Adventure Experiences Section */}
       <AdventureExperience adventures={adventures} />
