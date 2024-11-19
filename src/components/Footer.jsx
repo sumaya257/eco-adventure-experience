@@ -5,7 +5,7 @@ import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/
 
 const Footer = () => {
     return (
-        <footer className="bg-gray-800 text-white py-8">
+        <footer className="bg-gray-800 text-white py-8 mt-10">
             {/* Container */}
             <div className="container mx-auto  md:flex justify-between px-10">
                 {/* About Section */}

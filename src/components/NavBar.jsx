@@ -2,7 +2,7 @@ import React from 'react';
 
 const NavBar = () => {
     return (
-        <header className="bg-green-700 text-white py-3">
+        <header className="bg-green-700 text-white p-3">
             <div className="container mx-auto md:flex justify-between items-center">
                 <h1 className="text-2xl font-bold">Eco Adventures</h1>
 
