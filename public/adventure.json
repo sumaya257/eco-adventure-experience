@@ -2,7 +2,7 @@
     {
       "id": 1,
       "title": "Mountain Trekking Adventure",
-      "image": "https://example.com/images/mountain-trek.jpg",
+      "image": "/src/assets/images/mountain.jpg",
       "category": "Mountain Treks",
       "shortDescription": "Explore breathtaking mountain trails and experience the thrill of high-altitude trekking.",
       "cost": 250,
@@ -22,7 +22,7 @@
     {
       "id": 2,
       "title": "Ocean Scuba Diving Expedition",
-      "image": "https://example.com/images/ocean-dive.jpg",
+      "image": "/src/assets/images/diving.jpg",
       "category": "Ocean Dives",
       "shortDescription": "Dive into the crystal-clear waters and explore vibrant marine life.",
       "cost": 300,
@@ -42,7 +42,7 @@
     {
       "id": 3,
       "title": "Wildlife Safari Adventure",
-      "image": "https://example.com/images/wildlife-safari.jpg",
+      "image":  "/src/assets/images/safari.jpg",
       "category": "Wildlife Safaris",
       "shortDescription": "Witness majestic wildlife in their natural habitats.",
       "cost": 200,
@@ -62,7 +62,7 @@
     {
       "id": 4,
       "title": "Forest Expedition Experience",
-      "image": "https://example.com/images/forest-expedition.jpg",
+      "image":  "/src/assets/images/walk.jpg",
       "category": "Forest Expeditions",
       "shortDescription": "Discover the secrets of the lush green forests with expert guides.",
       "cost": 150,
