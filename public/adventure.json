@@ -1,0 +1,83 @@
+[
+    {
+      "id": 1,
+      "title": "Mountain Trekking Adventure",
+      "image": "https://example.com/images/mountain-trek.jpg",
+      "category": "Mountain Treks",
+      "shortDescription": "Explore breathtaking mountain trails and experience the thrill of high-altitude trekking.",
+      "cost": 250,
+      "availability": true,
+      "location": "Himalayas, Nepal",
+      "duration": "7 Days",
+      "adventureLevel": "Intermediate",
+      "includedItems": ["Guide", "Meals", "Camping Gear"],
+      "ecoFriendlyFeatures": ["Eco-lodges", "Leave No Trace Policy"],
+      "maxGroupSize": 10,
+      "specialInstructions": [
+        "Carry warm clothing.",
+        "Hydrate frequently.",
+        "Avoid single-use plastics."
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Ocean Scuba Diving Expedition",
+      "image": "https://example.com/images/ocean-dive.jpg",
+      "category": "Ocean Dives",
+      "shortDescription": "Dive into the crystal-clear waters and explore vibrant marine life.",
+      "cost": 300,
+      "availability": true,
+      "location": "Great Barrier Reef, Australia",
+      "duration": "5 Days",
+      "adventureLevel": "Advanced",
+      "includedItems": ["Scuba Gear", "Instructor", "Boat Transport"],
+      "ecoFriendlyFeatures": ["Coral-safe Sunscreen", "Marine Conservation Support"],
+      "maxGroupSize": 8,
+      "specialInstructions": [
+        "Bring waterproof camera.",
+        "Avoid touching marine life.",
+        "Follow instructor guidelines."
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Wildlife Safari Adventure",
+      "image": "https://example.com/images/wildlife-safari.jpg",
+      "category": "Wildlife Safaris",
+      "shortDescription": "Witness majestic wildlife in their natural habitats.",
+      "cost": 200,
+      "availability": false,
+      "location": "Serengeti National Park, Tanzania",
+      "duration": "3 Days",
+      "adventureLevel": "Beginner",
+      "includedItems": ["Binoculars", "Meals", "Safari Vehicle"],
+      "ecoFriendlyFeatures": ["Wildlife Conservation Donation", "Eco-friendly Campsites"],
+      "maxGroupSize": 15,
+      "specialInstructions": [
+        "Wear neutral-colored clothing.",
+        "Stay inside vehicles at all times.",
+        "Respect wildlife space."
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Forest Expedition Experience",
+      "image": "https://example.com/images/forest-expedition.jpg",
+      "category": "Forest Expeditions",
+      "shortDescription": "Discover the secrets of the lush green forests with expert guides.",
+      "cost": 150,
+      "availability": true,
+      "location": "Amazon Rainforest, Brazil",
+      "duration": "4 Days",
+      "adventureLevel": "Moderate",
+      "includedItems": ["Guide", "Meals", "Safety Gear"],
+      "ecoFriendlyFeatures": ["Biodegradable Supplies", "Minimal Impact Hiking"],
+      "maxGroupSize": 12,
+      "specialInstructions": [
+        "Pack insect repellent.",
+        "Wear sturdy hiking shoes.",
+        "Avoid loud noises."
+      ]
+    }
+  ]
+  
