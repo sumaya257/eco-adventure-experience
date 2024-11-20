@@ -7,7 +7,7 @@ const Login = () => {
     return (
         <div className="min-h-screen flex justify-center items-center bg-gray-100">
             <div className="card bg-white w-full max-w-lg shrink-0 shadow-2xl p-10">
-                <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+                <h2 className="text-2xl font-bold text-center mb-6">newTitle</h2>
                 <form className="card-body">
                     {/* Email Field */}
                     <div className="form-control">
