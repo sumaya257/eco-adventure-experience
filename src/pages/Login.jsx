@@ -5,22 +5,24 @@ import { AuthContext } from '../assets/provider/AuthProvider';
 
 const Login = () => {
     const {userLogin,setUser} = useContext(AuthContext)
+    const [error,setError] = useState({})
+    const location = useLocation()
+    const navigate = useNavigate()
     const handleSubmit = (e)=>{
          e.preventDefault()
          const form = e.target
          const email = form.email.value
          const password = form.password.value
          console.log(email,password)
-         
+
          userLogin(email, password)
          .then(result=>{
             const user = result.user
             setUser(user)
+            navigate(location?.state?location.state:"/")
          })
-         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert('Wrong credentials')
+         .catch((err) => {
+            setError({...error ,login:err.code})
           });
           
         
@@ -38,6 +40,8 @@ const Login = () => {
                         </label>
                         <input name='email' type="email" placeholder="email" className="input input-bordered" required />
                     </div>
+                     
+                     
 
                     {/* Password Field */}
                     <div className="form-control">
@@ -49,6 +53,13 @@ const Login = () => {
                             placeholder="password"
                             className="input input-bordered"
                         />
+                        {
+                        error.login && (
+                            <label className="label text-red-400 text-sm">
+                            {error.login}
+                        </label>
+                        )
+                     }
                         <label className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>

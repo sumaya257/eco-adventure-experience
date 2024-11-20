@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../assets/provider/AuthProvider';
 
 const Register = () => {
-    // Correctly use useContext inside the functional component
-    const { createNewUser,setUser } = useContext(AuthContext);
+    const { createNewUser, setUser } = useContext(AuthContext);
+    const [error, setError] = useState({});
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -14,19 +14,37 @@ const Register = () => {
         const email = form.get('email');
         const password = form.get('password');
 
-        console.log({ name, email, photo, password });
+        // Password Validation
+        const passwordErrors = [];
+        if (!/[A-Z]/.test(password)) {
+            passwordErrors.push('Must have an uppercase letter.');
+        }
+        if (!/[a-z]/.test(password)) {
+            passwordErrors.push('Must have a lowercase letter.');
+        }
+        if (password.length < 6) {
+            passwordErrors.push('Must be at least 6 characters long.');
+        }
+
+        if (passwordErrors.length > 0) {
+            setError({ password: passwordErrors });
+            return;
+        }
+
+        // Clear errors if validation passes
+        setError({});
 
         createNewUser(email, password)
             .then((result) => {
-                // Signed up
                 const user = result.user;
-                setUser(user)
-                console.log(user);
+                setUser(user);
+                console.log('User registered successfully:', user);
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
+                console.error('Registration error:', errorCode, errorMessage);
+                setError({ general: errorMessage });
             });
     };
 
@@ -42,7 +60,7 @@ const Register = () => {
                         <input
                             name="name"
                             type="text"
-                            placeholder="name"
+                            placeholder="Name"
                             className="input input-bordered"
                             required
                         />
@@ -55,7 +73,7 @@ const Register = () => {
                         <input
                             name="email"
                             type="email"
-                            placeholder="email"
+                            placeholder="Email"
                             className="input input-bordered"
                             required
                         />
@@ -63,12 +81,12 @@ const Register = () => {
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Photo Url</span>
+                            <span className="label-text">Photo URL</span>
                         </label>
                         <input
                             name="photo"
                             type="text"
-                            placeholder="photo url"
+                            placeholder="Photo URL"
                             className="input input-bordered"
                             required
                         />
@@ -81,10 +99,17 @@ const Register = () => {
                         <input
                             name="password"
                             type="password"
-                            placeholder="password"
+                            placeholder="Password"
                             className="input input-bordered"
                             required
                         />
+                        {error.password && (
+                            <ul className="text-red-500 mt-2 text-xs">
+                                {error.password.map((err, index) => (
+                                    <li key={index}>{err}</li>
+                                ))}
+                            </ul>
+                        )}
                         <label className="label">
                             <a href="#" className="label-text-alt link link-hover">
                                 Forgot password?
@@ -95,6 +120,10 @@ const Register = () => {
                     <div className="form-control mt-6">
                         <button className="btn btn-primary">Register</button>
                     </div>
+
+                    {error.general && (
+                        <p className="text-center text-red-500 mt-4 text-xs">{error.general}</p>
+                    )}
 
                     <p className="text-center text-gray-500 mt-4">
                         Already have an account?
