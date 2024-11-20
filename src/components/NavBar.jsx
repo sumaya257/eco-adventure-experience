@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../assets/provider/AuthProvider';
 
 const NavBar = () => {
-    const {user} = useContext(AuthContext)
+    const {user,logOut} = useContext(AuthContext)
     return (
         <header className="bg-green-700 text-white p-3">
             <div className="container mx-auto md:flex justify-between items-center">
@@ -17,7 +17,7 @@ const NavBar = () => {
                     <a href="/update-profile" className="hover:text-green-300">Update Profile</a>
                     
                     {
-                        user && user?.email? <button>LogOut</button>:<button className="bg-green-500 px-4 py-2 rounded hover:bg-green-600">
+                        user && user?.email? <button onClick={logOut}>LogOut</button>:<button className="bg-green-500 px-4 py-2 rounded hover:bg-green-600">
                         <NavLink to={'/login'}> Login</NavLink>   
                         </button>
                     }

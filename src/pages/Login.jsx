@@ -1,20 +1,42 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../assets/provider/AuthProvider';
 
 const Login = () => {
+    const {userLogin,setUser} = useContext(AuthContext)
+    const handleSubmit = (e)=>{
+         e.preventDefault()
+         const form = e.target
+         const email = form.email.value
+         const password = form.password.value
+         console.log(email,password)
+         
+         userLogin(email, password)
+         .then(result=>{
+            const user = result.user
+            setUser(user)
+         })
+         .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert('Wrong credentials')
+          });
+          
+        
+    }
 
     return (
         <div className="min-h-screen flex justify-center items-center bg-gray-100">
             <div className="card bg-white w-full max-w-lg shrink-0 shadow-2xl p-10">
                 <h2 className="text-2xl font-bold text-center mb-6">newTitle</h2>
-                <form className="card-body">
+                <form onSubmit={handleSubmit} className="card-body">
                     {/* Email Field */}
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" placeholder="email" className="input input-bordered" required />
+                        <input name='email' type="email" placeholder="email" className="input input-bordered" required />
                     </div>
 
                     {/* Password Field */}
@@ -22,7 +44,7 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input
+                        <input name='password'
                             type="password"
                             placeholder="password"
                             className="input input-bordered"
