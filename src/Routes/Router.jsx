@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import AdventureDetails from '../components/AdventureDetails';  // Adventure Details component
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,9 @@ const router = createBrowserRouter([
 
        {
         path: '/adventure/:id', // Dynamic path for adventure details
-        element: <AdventureDetails />,
+        element: (<PrivateRoute>
+        <AdventureDetails />
+        </PrivateRoute>),
         loader: () => fetch('/adventure.json'),
         },
         {
