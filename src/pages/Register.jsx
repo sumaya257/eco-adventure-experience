@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../assets/provider/AuthProvider';
 
 const Register = () => {
     const handleSubmit=(e)=>{
+            const {createNewUser} = useContext(AuthContext)
                  e.preventDefault();
                  const form = new FormData(e.target)
                  console.log(form)
@@ -11,6 +13,7 @@ const Register = () => {
                  const email=form.get('email')
                  const password=form.get('password')
                  console.log({name,email,photo,password})
+                 createNewUser(name,password)
     }
     return (
         <div className="min-h-screen flex justify-center items-center bg-gray-100">
