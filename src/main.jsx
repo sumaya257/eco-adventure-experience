@@ -9,8 +9,10 @@ import AuthProvider from './assets/provider/AuthProvider'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-    <ToastContainer />
+    {/* ToastContainer is placed at the root level for global availability */}
+    <ToastContainer/>
     <RouterProvider router={router}></RouterProvider>
+    
     </AuthProvider>
   </StrictMode>,
 )

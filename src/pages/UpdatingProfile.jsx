@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../assets/provider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
+
 const UpdatingProfile = () => {
   const { user, updateUserProfile } = useContext(AuthContext); // Access user and updateUserProfile from AuthContext
   const [name, setName] = useState(user?.displayName || ''); // Initialize with current user's name
@@ -10,6 +11,7 @@ const UpdatingProfile = () => {
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false); // Track loading state
   const navigate = useNavigate();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
