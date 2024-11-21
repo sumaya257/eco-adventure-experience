@@ -1,10 +1,9 @@
 # Eco-Adventure Experiences
 
 ## Assignment Category: 002
-## GitHub Repo Link
-[Your Live URL Here] 
+
 ## Live URL
-[Your Live URL Here] 
+[[Live URL Here](https://eco-adventure-experience-f3f62.web.app)] 
 
 
 ## Project Overview
@@ -21,8 +20,3 @@ Eco-Adventure Experiences is an eco-friendly adventure blog website that showcas
 - **User Profiles**: Users can update their profile information and view their adventure history.
 - **Adventure Data**: JSON-based adventure data for displaying eco-friendly experiences.
 - **Google Meet Integration**: Expert consultation functionality with Google Meet integration based on time of day.
-
-## Installation Instructions
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/eco-adventure-experiences.git
