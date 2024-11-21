@@ -4,6 +4,7 @@ import { AuthContext } from '../assets/provider/AuthProvider';
 
 const Register = () => {
     const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
+    const [passwordVisible, setPasswordVisible] = useState(false);
     const [error, setError] = useState({});
     const navigate = useNavigate()
     const handleSubmit = (e) => {
@@ -40,11 +41,12 @@ const Register = () => {
                 setUser(user);
                 console.log('User registered successfully:', user);
                 updateUserProfile({
-                    displayName:name, photoURL:photo}).then(
-                        ()=>{
-                            navigate('/')
-                        }
-                    )
+                    displayName: name, photoURL: photo
+                }).then(
+                    () => {
+                        navigate('/')
+                    }
+                )
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -102,13 +104,22 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input
-                            name="password"
-                            type="password"
-                            placeholder="Password"
-                            className="input input-bordered"
-                            required
-                        />
+                        <div className="relative">
+                            <input
+                                name="password"
+                                type={passwordVisible ? 'text' : 'password'}
+                                placeholder="Enter your password"
+                                className="input input-bordered pr-10"
+                                required
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setPasswordVisible(!passwordVisible)}
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                            >
+                                {passwordVisible ? 'Hide' : 'Show'}
+                            </button>
+                        </div>
                         {error.password && (
                             <ul className="text-red-500 mt-2 text-xs">
                                 {error.password.map((err, index) => (
@@ -122,6 +133,7 @@ const Register = () => {
                             </a>
                         </label>
                     </div>
+
 
                     <div className="form-control mt-6">
                         <button className="btn btn-primary">Register</button>

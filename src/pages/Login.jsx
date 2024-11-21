@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify'; // For notifications
 import { AuthContext } from '../assets/provider/AuthProvider';
-import { sendPasswordResetEmail } from 'firebase/auth';
+import { sendPasswordResetEmail, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import app from '../firebase/firebase.config';
 import { getAuth } from 'firebase/auth';
 import { ToastContainer } from 'react-toastify';
@@ -15,6 +15,7 @@ const Login = () => {
     const auth = getAuth(app);
 
     const emailRef = useRef();
+    const [passwordVisible, setPasswordVisible] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -59,6 +60,20 @@ const Login = () => {
             });
     };
 
+    // Google Sign-In
+    const handleGoogleLogin = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                const user = result.user;
+                setUser(user);
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch((error) => {
+                setError({ ...error, login: error.message });
+            });
+    };
+
     return (
         <div className="min-h-screen flex justify-center items-center bg-gray-100 relative">
             <div className="card bg-white w-full max-w-lg shrink-0 shadow-2xl p-10 relative">
@@ -83,13 +98,22 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input
-                            name="password"
-                            type="password"
-                            placeholder="Enter your password"
-                            className="input input-bordered"
-                            required
-                        />
+                        <div className="relative">
+                            <input
+                                name="password"
+                                type={passwordVisible ? 'text' : 'password'}
+                                placeholder="Enter your password"
+                                className="input input-bordered pr-10"
+                                required
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setPasswordVisible(!passwordVisible)}
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                            >
+                                {passwordVisible ? 'Hide' : 'Show'}
+                            </button>
+                        </div>
                         {error.login && (
                             <label className="label text-red-400 text-sm">
                                 {error.login}
@@ -106,30 +130,31 @@ const Login = () => {
                             </label>
                         )}
                     </div>
+
                     <ToastContainer
-                    position="bottom-center"
-                    autoClose={5000}
-                    hideProgressBar={true}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="light"
-                    containerStyle={{
-                        position: 'absolute',
-                        bottom: '20px', // Adjust the vertical position near the form
-                        width: 'auto', // Makes the container size fit the content
-                        left: '50%',
-                        transform: 'translateX(-50%)', // Centers the toast horizontally
-                        background: '#fff',
-                        border: '1px solid #ddd',
-                        borderRadius: '8px',
-                        padding: '10px',
-                        boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-                    }}
-                />
+                        position="bottom-center"
+                        autoClose={5000}
+                        hideProgressBar={true}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="light"
+                        containerStyle={{
+                            position: 'absolute',
+                            bottom: '20px',
+                            width: 'auto',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            background: '#fff',
+                            border: '1px solid #ddd',
+                            borderRadius: '8px',
+                            padding: '10px',
+                            boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+                        }}
+                    />
 
                     <div className="form-control mt-6">
                         <button type="submit" className="btn btn-primary">
@@ -138,9 +163,11 @@ const Login = () => {
                     </div>
 
                     <div className="divider my-4">OR</div>
+
                     <div className="form-control">
                         <button
                             type="button"
+                            onClick={handleGoogleLogin}
                             className="btn btn-outline btn-accent"
                         >
                             Login with Google
