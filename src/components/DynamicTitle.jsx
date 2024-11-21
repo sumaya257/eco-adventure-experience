@@ -5,31 +5,27 @@ const DynamicTitle = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log('Current Path:', location.pathname); // Debug log
-    const setTitle = () => {
-      switch (location.pathname) {
-        case '/':
-          return 'Eco Adventure - Home';
-        case '/login':
-          return 'Eco Adventure - Login';
-        case '/profile':
-          return 'Eco Adventure - My Profile';
-        case '/update-profile':
-          return 'Eco Adventure - Update Profile';
-        default:
-          if (location.pathname.startsWith('/adventure/')) {
-            return 'Eco Adventure - Adventure Details';
-          }
-          return 'Eco Adventure';
-      }
+    // Define titles for each route
+    const titles = {
+      '/': 'Eco Adventure - Home',
+      '/login': 'Eco Adventure - Login',
+      '/myprofile': 'Eco Adventure - My Profile',
+      '/updateprofile': 'Eco Adventure - Update Profile',
     };
 
-    const newTitle = setTitle();
-    console.log('Setting Document Title:', newTitle); // Debug log
-    document.title = newTitle;
-  }, [location]);
+    // Default title if no match is found
+    let title = titles[location.pathname] || 'Eco Adventure';
 
-  return null;
+    // Special case for dynamic routes
+    if (location.pathname.startsWith('/adventure/')) {
+      title = 'Eco Adventure - Adventure Details';
+    }
+
+    // Set the document title
+    document.title = title;
+  }, [location]); // Runs whenever the route changes
+
+  return null; // This component doesn't render anything
 };
 
 export default DynamicTitle;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { NavLink } from 'react-router-dom';
 
 
 const Footer = () => {
@@ -20,10 +21,10 @@ const Footer = () => {
                 <div>
                     <h3 className="text-xl font-bold mb-4">Quick Links</h3>
                     <ul className="space-y-2">
-                        <li><a href="/" className="text-gray-400 hover:text-white">Home</a></li>
-                        <li><a href="/profile" className="text-gray-400 hover:text-white">My Profile</a></li>
-                        <li><a href="/update-profile" className="text-gray-400 hover:text-white">Update Profile</a></li>
-                        <li><a href="/login" className="text-gray-400 hover:text-white">Login</a></li>
+                        <li><NavLink to="/" className="text-gray-400 hover:text-white">Home</NavLink></li>
+                        <li><NavLink to="/myprofile" className="text-gray-400 hover:text-white">My Profile</NavLink></li>
+                        <li><NavLink to="/updateprofile" className="text-gray-400 hover:text-white">Update Profile</NavLink></li>
+                        <li><NavLink to="/login" className="text-gray-400 hover:text-white">Login</NavLink></li>
                     </ul>
                 </div>
 

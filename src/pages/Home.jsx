@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS CSS
 
+
 const Home = () => {
     // Fetch data from the loader
     const adventures = useLoaderData();
