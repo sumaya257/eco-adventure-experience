@@ -1,17 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 
 const AdventureExperiences = ({ adventures }) => {
-  const navigate = useNavigate();
-
-  // Handle the Explore button click
-  const handleExplore = (id) => {
-    const isLoggedIn = false; // Replace with actual authentication check
-    if (isLoggedIn) {
-      navigate(`/adventure/${id}`);
-    } else {
-      navigate('/login');
-    }
-  };
+  
 
   return (
     <section className="w-full lg:w-8/12 mx-auto px-4 py-12">

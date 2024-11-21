@@ -5,6 +5,8 @@ import AdventureDetails from '../components/AdventureDetails';  // Adventure Det
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import PrivateRoute from './PrivateRoute';
+import MyProfile from '../pages/MyProfile';
+import UpdatingProfile from '../pages/UpdatingProfile';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,21 @@ const router = createBrowserRouter([
         {
             path: '/register',
             element:<Register></Register>,
+          },
+
+          {
+            path: '/myprofile',
+            element:(<PrivateRoute>
+              <MyProfile/>
+              </PrivateRoute>),
+          },
+
+          {
+            path: '/updateprofile',
+
+            element:(<PrivateRoute>
+              <UpdatingProfile/>
+              </PrivateRoute>),
           },
 
     ],

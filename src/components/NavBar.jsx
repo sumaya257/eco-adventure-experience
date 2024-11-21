@@ -12,9 +12,14 @@ const NavBar = () => {
                
                 <nav className="flex space-x-4 justify-center items-center">
                     <NavLink to="/" className="hover:text-green-300">Home</NavLink>
-                    <a href="/profile" className="hover:text-green-300">{user && 
-                    user.email}</a>
-                    <a href="/update-profile" className="hover:text-green-300">Update Profile</a>
+                    <NavLink to="/myprofile" className="hover:text-green-300">
+                    {user && user?.email?
+                        <div className='relative group'>
+                        <img className="w-16 h-16 rounded-full border border-gray-300" src={user.photoURL} alt=""/>
+                        <p className="absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded bg-gray-800 px-3 py-1 text-sm text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">{user.displayName}</p>
+                        </div>:'User Profile'}
+                    </NavLink>
+                    <NavLink to='/updateprofile' className="hover:text-green-300">Update Profile</NavLink>
                     
                     {
                         user && user?.email? <button onClick={logOut}>LogOut</button>:<button className="bg-green-500 px-4 py-2 rounded hover:bg-green-600">
